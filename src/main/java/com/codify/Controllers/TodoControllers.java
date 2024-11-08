@@ -34,8 +34,8 @@ public class TodoControllers {
         return "redirect:/";
     }
     @GetMapping("/{id}/toggle")
-    public String toggleTask(@PathVariable Long id){
+    public String toggleTask(@PathVariable Long id) {
         todoServices.toggleTasks(id);
-        return "redirect:/";
+        return "redirect:/";  // Redirect to the home page or task list
     }
 }
