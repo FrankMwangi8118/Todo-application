@@ -33,11 +33,14 @@ public class TodoServices {
         todoRepository.deleteById(id);
     }
 
+    //update task
+
     public void toggleTasks(Long id) {
-        Task task=  todoRepository.findAllById(id)
-                .orElseThrow(()=> new IllegalArgumentException("invalid task id"))
-        task.setCompleted();
+        Task task = todoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid task ID"));
+        task.setCompleted(!task.isCompleted());
 
-
+        todoRepository.save(task);
     }
+
 }
